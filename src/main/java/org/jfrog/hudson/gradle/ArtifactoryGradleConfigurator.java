@@ -492,6 +492,7 @@ public class ArtifactoryGradleConfigurator extends BuildWrapper implements Deplo
                 ServerDetails serverDetails = getDetails();
                 ReleaseAction releaseAction = ActionableHelper.getLatestAction(build, ReleaseAction.class);
                 if (releaseAction != null) {
+                    releaseAction.addVars(env);
                     String stagingRepository = releaseAction.getStagingRepositoryKey();
                     if (StringUtils.isBlank(stagingRepository)) {
                         stagingRepository = getRepositoryKey();
